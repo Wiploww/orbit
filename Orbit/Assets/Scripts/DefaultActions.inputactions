@@ -1,0 +1,56 @@
+{
+    "name": "DefaultActions",
+    "maps": [
+        {
+            "name": "PlayerControls",
+            "id": "027a1ff3-4dab-4634-8c05-428c5af6ac89",
+            "actions": [
+                {
+                    "name": "MoveSun",
+                    "type": "PassThrough",
+                    "id": "1d841fdc-0907-4d57-b270-959e9c5fb4a9",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8895c045-ffcd-4e5e-acc9-7e611fc592c1",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveSun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88a1c640-effd-4a3a-b116-063c74d1def3",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveSun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "23fc24e3-970c-4f72-a3a6-160201010f39",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveSun",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

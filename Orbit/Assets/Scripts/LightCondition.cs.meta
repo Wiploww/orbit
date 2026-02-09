@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 34f4ab0a4a185d64bae6cd506ea0c7fa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - conditionLight: {instanceID: 0}
+  - ting: {fileID: 8300000, guid: 4698ae6525f5de3428ea3d31b7c39187, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
