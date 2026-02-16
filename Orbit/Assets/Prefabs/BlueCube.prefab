@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8131029247190290249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2798497516999379507}
+  - {fileID: 7368223813875183797}
   - {fileID: 8131029247190290249}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -552,10 +552,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f4ab0a4a185d64bae6cd506ea0c7fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCondition: 0
   conditionMet: 0
-  conditionLight: {fileID: 8628919226932809431}
+  conditionLight: {fileID: 8651436429346069171}
+  conditionMet_Mat: {fileID: 2100000, guid: d564048902d26444b93d80e0cca459b7, type: 2}
+  conditionNotMet_Mat: {fileID: 2100000, guid: dede8a3df00aecd4aa78500e1340b543, type: 2}
   ting: {fileID: 8300000, guid: 4698ae6525f5de3428ea3d31b7c39187, type: 3}
---- !u!1 &8628919226932809431
+--- !u!1 &8651436429346069171
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -563,44 +566,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2798497516999379507}
-  - component: {fileID: 5916164547338843181}
-  - component: {fileID: 1167546150806629166}
-  m_Layer: 6
+  - component: {fileID: 7368223813875183797}
+  - component: {fileID: 6048029244893588481}
+  - component: {fileID: 154437669471235028}
+  m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &2798497516999379507
+--- !u!4 &7368223813875183797
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8628919226932809431}
+  m_GameObject: {fileID: 8651436429346069171}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.438, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 694666957502749243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &5916164547338843181
+--- !u!108 &6048029244893588481
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8628919226932809431}
+  m_GameObject: {fileID: 8651436429346069171}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0.27816963, b: 1, a: 1}
-  m_Intensity: 50
+  m_Color: {r: 0.1686747, g: 0.1686747, b: 1, a: 1}
+  m_Intensity: 153.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -637,7 +640,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 4294967295
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -650,13 +653,13 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &1167546150806629166
+--- !u!114 &154437669471235028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8628919226932809431}
+  m_GameObject: {fileID: 8651436429346069171}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}

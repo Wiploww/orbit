@@ -28,6 +28,8 @@ public class LightCondition : MonoBehaviour
 
     [Header("References")]
     [SerializeField] GameObject conditionLight;
+    [SerializeField] Material conditionMet_Mat;
+    [SerializeField] Material conditionNotMet_Mat;
     [SerializeField] AudioClip ting;
     private bool hasTinged;
     private GameObject sun;
@@ -170,7 +172,6 @@ public class LightCondition : MonoBehaviour
                 Debug.DrawRay(edges[i], (sun.transform.position - edges[i]).normalized * Vector3.Distance(edges[i], sun.transform.position), Color.red);
 
                 conditionMet = false;
-                conditionLight.SetActive(false);
                 return;
             }
         }
@@ -194,12 +195,10 @@ public class LightCondition : MonoBehaviour
                 if(currentCondition == Condition.inLight)
                 {
                     conditionMet = true;
-                    conditionLight.SetActive(true);
                 }
                 else
                 {
                     conditionMet = false;
-                    conditionLight.SetActive(false);
                 }
                 break;
             
@@ -207,28 +206,29 @@ public class LightCondition : MonoBehaviour
                 if (currentCondition == Condition.inDark)
                 {
                     conditionMet = true;
-                    conditionLight.SetActive(true);
                 }
                 else
                 {
                     conditionMet = false;
-                    conditionLight.SetActive(false);
                 }
                 break;
 
             case "Green":
                 conditionMet = true;
-                conditionLight.SetActive(true);
                 break;
         }
 
         if(!hasTinged && conditionMet)
         {
+            //GetComponent<Renderer>().material = conditionMet_Mat;
+            conditionLight.SetActive(true);
             AudioSource.PlayClipAtPoint(ting, Camera.main.transform.position, 4);
             hasTinged = true;
         }
         else if (!conditionMet)
         {
+            //GetComponent<Renderer>().material = conditionNotMet_Mat;
+            conditionLight.SetActive(false);
             hasTinged = false;
         }
     }
