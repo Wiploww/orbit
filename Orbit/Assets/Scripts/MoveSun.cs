@@ -9,9 +9,8 @@ using UnityEngine.SceneManagement;
 
 public class MoveSun : MonoBehaviour
 {
-    [SerializeField] GameObject cursor;
     [SerializeField] GameObject sun;
-    [SerializeField] float moveSpeed = 10;
+    [SerializeField] float moveSpeed = 100000;
 
     Camera mainCam;
 
@@ -24,21 +23,18 @@ public class MoveSun : MonoBehaviour
 
     void FixedUpdate()
     {
-        #region - Drag Controls -
-
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             RotateSun(true);
         }
-        else
+    }
+
+    private void OnMouseDrag()
+    {
+        if (SceneManager.GetActiveScene().name != "MainMenu")
         {
-            if (Input.GetMouseButton(0))
-            {
-                RotateSun(false);
-            }
+            RotateSun(false);
         }
-        
-        #endregion
     }
 
     bool HoverTest()
@@ -57,20 +53,11 @@ public class MoveSun : MonoBehaviour
 
     void RotateSun(bool isTitle)
     {
-        if (isTitle) 
-        { 
-            mousePositionWorld.z = 42.1604f; 
-        }
-        else 
-        { 
-            mousePositionWorld.z = 46.36f; 
-        }
+        mousePositionWorld = Input.mousePosition;
+        if (isTitle){ mousePositionWorld.z = 42.1604f; }
+        else { mousePositionWorld.z = 46.36f; }
 
-        mousePositionWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(mousePositionWorld - transform.position, Vector3.up), Time.deltaTime * moveSpeed);
-
-        cursor.transform.position = mousePositionWorld;
-
-        Debug.Log(mousePositionWorld);
+        mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionWorld);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(mousePositionWorld - transform.position, Vector3.up), 1);
     }
 }
