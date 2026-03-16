@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] GameObject[] levels;
+    public GameObject[] levels;
 
     private void Awake()
     {

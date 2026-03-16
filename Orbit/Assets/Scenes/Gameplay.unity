@@ -2166,14 +2166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sun: {fileID: 86269317}
-  freeCam: {fileID: 1601382855}
-  sunCam: {fileID: 0}
-  cursorSprite:
-  - {fileID: 2800000, guid: 77c0ef4d814e10248853e99c04a7f03f, type: 3}
-  - {fileID: 2800000, guid: bee7f0c1503c85548a31c0937216f1cd, type: 3}
-  - {fileID: 2800000, guid: 9fb8970bba42c924d94bd5125acf1e83, type: 3}
   moveSpeed: 0.8
-  mouseScrollY: 0
 --- !u!54 &551751738
 Rigidbody:
   m_ObjectHideFlags: 0
