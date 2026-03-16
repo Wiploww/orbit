@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
+    [SerializeField] int levelCount = 7;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] GameObject optionScreen;
     [SerializeField] GameObject colorTips;
@@ -138,7 +139,7 @@ public class ButtonManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if(PlayerPrefs.GetInt("CurrentLevel") == 4)
+        if(PlayerPrefs.GetInt("CurrentLevel") == levelCount - 1)
         {
             LevelSelect();
         }
