@@ -5,8 +5,8 @@ I began this project in Fall 2024 with grid paper, a flashlight, and board game 
 
 ***
 
-### Beta v3.0
-2/14/26
-- Sun now follows the mouse instead of being controlled by arrow keys
-- Title screen adjusted to match the new control scheme
-- Hint text updated for clarity and readability
+## Beta-v3.1
+**3/16/26**
+- Added Space Cubes
+- Added two new levels
+- Build uploaded to [wiploww.itch.io/orbit](https://wiploww.itch.io/orbit)
