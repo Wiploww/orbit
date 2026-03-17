@@ -5,6 +5,7 @@ I began this project in Fall 2024 with grid paper, a flashlight, and board game 
 
 ***
 
+# Recent Changes
 ## Beta-v3.1
 **3/16/26**
 - Added Space Cubes
