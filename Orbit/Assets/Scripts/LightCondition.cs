@@ -97,7 +97,7 @@ public class LightCondition : MonoBehaviour
                     }
                 }
 
-                Debug.Log(gameObject.name + hits[i][j].transform.name);
+                //Debug.Log(gameObject.name + hits[i][j].transform.name);
             }
 
             if (hits[i].Length == 0)

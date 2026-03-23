@@ -5,22 +5,36 @@ using UnityEngine;
 
 public class CubeMovement : MonoBehaviour
 {
+    [SerializeField] bool isMoveable;
     [SerializeField] GameObject spaceSlider;
+    
     Vector3 mousePositionWorld;
 
     private void Start()
     {
-        spaceSlider.SetActive(true);
+        if (isMoveable) { spaceSlider.SetActive(true); }
     }
 
     private void OnMouseDrag()
     {
-        mousePositionWorld = Input.mousePosition;
-        mousePositionWorld.z = 49f;
+        if (isMoveable)
+        {
+            Debug.Log(mousePositionWorld);
+            mousePositionWorld = Input.mousePosition;
+            
+            mousePositionWorld.z = 49f;
+            mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionWorld);
 
-        mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionWorld);
+            float distanceFromCenter = Mathf.Sqrt((Mathf.Pow(mousePositionWorld.x, 2) - 0) + (Mathf.Pow(mousePositionWorld.z, 2) - 0));
 
-        transform.position = mousePositionWorld;
+            if (distanceFromCenter < 18.5f)
+            {
+                gameObject.transform.position = mousePositionWorld;
+            }
+            else
+            {
+                Debug.Log("Too far :[");
+            }
+        }
     }
-    
 }
