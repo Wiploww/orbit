@@ -53,7 +53,6 @@ public class CubePulse : MonoBehaviour
     {
         while (pulseTime < 1)
         {
-            Debug.Log(pulseTime);
             pulseTime += .01f;
             pulseMaterial.SetFloat("_circleScale", pulseTime);
             yield return new WaitForSecondsRealtime(.005f);

@@ -50,14 +50,10 @@ public class WinManager : MonoBehaviour
                 screen.alpha += .01f + Time.deltaTime;
             }
 
-            //Debug.Log(PlayerPrefs.GetInt("CurrentLevel") + ", " + PlayerPrefs.GetInt("LevelMax"));
-
             if (PlayerPrefs.GetInt("LevelMax") <= PlayerPrefs.GetInt("CurrentLevel") && win == false)
             {
                 PlayerPrefs.SetInt("LevelMax", PlayerPrefs.GetInt("CurrentLevel") + 1);
             }
-
-            //Debug.Log(PlayerPrefs.GetInt("CurrentLevel") + ", " + PlayerPrefs.GetInt("LevelMax"));
 
             win = true;
         }
@@ -67,9 +63,9 @@ public class WinManager : MonoBehaviour
     {
         foreach(LightCondition c in cubes)
         {
-            if(c.conditionMet == false)
+            if(c.conditionMet == false) //for each unsatisfied cube
             {
-                if(winVolume.weight > 0)
+                if(winVolume.weight > 0) //decrease winVolume weight
                 {
                     winVolume.weight -= .03f + Time.deltaTime;
                 }
@@ -80,6 +76,7 @@ public class WinManager : MonoBehaviour
             }
         }
 
+        //every tick, increase winVolume weight
         winVolume.weight += Time.deltaTime;
     }
 
