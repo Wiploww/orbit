@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.ProBuilder.MeshOperations;
 
 public class LightCondition : MonoBehaviour
 {
+    public UnityEvent ConditionMet;
+    public UnityEvent ConditionLost;
     enum Condition
     {
         Error, inLight, inDark, inRed, inLightAndDark
@@ -18,6 +21,7 @@ public class LightCondition : MonoBehaviour
     [Header("Conditions")]
     [SerializeField] Condition currentCondition;
     public bool conditionMet = false;
+    public bool conditionMetOnce = false;
 
     //Raycast
     LayerMask layer = 1 << 6;
@@ -27,11 +31,6 @@ public class LightCondition : MonoBehaviour
     Color color;
 
     [Header("References")]
-    [SerializeField] GameObject conditionLight;
-    [SerializeField] Material conditionMet_Mat;
-    [SerializeField] Material conditionNotMet_Mat;
-    [SerializeField] AudioClip ting;
-    private bool hasTinged;
     private GameObject sun;
 
     void Start()
@@ -218,18 +217,16 @@ public class LightCondition : MonoBehaviour
                 break;
         }
 
-        if(!hasTinged && conditionMet)
+        if(conditionMet && !conditionMetOnce)
         {
-            //GetComponent<Renderer>().material = conditionMet_Mat;
-            conditionLight.SetActive(true);
-            AudioSource.PlayClipAtPoint(ting, Camera.main.transform.position, 4);
-            hasTinged = true;
+            ConditionMet.Invoke();
+            conditionMetOnce = true;
         }
-        else if (!conditionMet)
+        else if (!conditionMet && conditionMetOnce)
         {
-            //GetComponent<Renderer>().material = conditionNotMet_Mat;
-            conditionLight.SetActive(false);
-            hasTinged = false;
+            ConditionLost.Invoke();
+            conditionMetOnce = false;
         }
+        
     }
 }

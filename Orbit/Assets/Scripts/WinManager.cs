@@ -28,6 +28,8 @@ public class WinManager : MonoBehaviour
     {
         cubes = FindObjectsByType<LightCondition>(FindObjectsSortMode.None);
         screen = winScreen.GetComponent<CanvasGroup>();
+
+        Time.timeScale = 1;
     }
 
     void Update()
@@ -41,6 +43,7 @@ public class WinManager : MonoBehaviour
         if (winVolume.weight >= 1) //Win!!!
         {
             winScreen.SetActive(true);
+            Time.timeScale = 0;
 
             if (screen.alpha < 1)
             {
@@ -55,7 +58,6 @@ public class WinManager : MonoBehaviour
             }
 
             //Debug.Log(PlayerPrefs.GetInt("CurrentLevel") + ", " + PlayerPrefs.GetInt("LevelMax"));
-
 
             win = true;
         }
