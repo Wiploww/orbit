@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
     [SerializeField] ButtonManager buttonManager;
-    [SerializeField] Material white;
-    [SerializeField] Material white_emissive;
-    [SerializeField] AudioClip ting;
+    [SerializeField] Material mainColor;
+    [SerializeField] Material colorEmissive;
+    bool buttonClicked = false;
 
     enum ButtonAction
     {
@@ -18,33 +20,37 @@ public class MenuButton : MonoBehaviour
     
     private void OnMouseEnter()
     {
-        GetComponent<Renderer>().material = white_emissive;
-        AudioSource.PlayClipAtPoint(ting, Camera.main.transform.position, 4);
+        GetComponent<Renderer>().material = colorEmissive;
+        buttonClicked = true;
     }
     private void OnMouseExit()
     {
-        GetComponent<Renderer>().material = white;
+        GetComponent<Renderer>().material = mainColor;
+        buttonClicked = false;
     }
 
     private void OnMouseUp()
     {
-        switch(buttonAction)
+        if (buttonClicked)
         {
-            case ButtonAction.Play:
-                buttonManager.Play();
-                break;
+            switch (buttonAction)
+            {
+                case ButtonAction.Play:
+                    buttonManager.Play();
+                    break;
 
-            case ButtonAction.LevelSelect:
-                buttonManager.LevelSelect();
-                break;
+                case ButtonAction.LevelSelect:
+                    buttonManager.LevelSelect();
+                    break;
 
-            case ButtonAction.Options:
-                buttonManager.OpenSettings();
-                break;
+                case ButtonAction.Options:
+                    buttonManager.OpenSettings();
+                    break;
 
-            case ButtonAction.Quit:
-                buttonManager.Quit();
-                break;
+                case ButtonAction.Quit:
+                    buttonManager.Quit();
+                    break;
+            }
         }
     }
 }

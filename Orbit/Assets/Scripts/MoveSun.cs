@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.SceneManagement;
 
 public class MoveSun : MonoBehaviour
@@ -14,10 +15,14 @@ public class MoveSun : MonoBehaviour
     [SerializeField] static bool isLocked;
 
     private Vector3 mousePositionWorld;
+    float sunZ;
 
     private void Awake()
     {
         isLocked = false;
+
+        if (SceneManager.GetActiveScene().name == "MainMenu") { sunZ = 12.1604f; }
+        else { sunZ = 46.36f; }
     }
 
     private void Update()
@@ -37,14 +42,7 @@ public class MoveSun : MonoBehaviour
     void FollowMouse()
     {
         mousePositionWorld = Input.mousePosition;
-        if (SceneManager.GetActiveScene().name == "MainMenu")
-        {
-            mousePositionWorld.z = 42.1604f;
-        }
-        else
-        {
-            mousePositionWorld.z = 46.36f;
-        }
+        mousePositionWorld.z = sunZ;
 
         mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionWorld);
 

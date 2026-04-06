@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 1007897440833004138}
   - component: {fileID: 1510582000935199231}
   - component: {fileID: 8821260195288692604}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Pulse
   m_TagString: Untagged
   m_Icon: {fileID: 0}

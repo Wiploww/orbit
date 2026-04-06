@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CubeMovement : MonoBehaviour
 {
@@ -10,11 +11,16 @@ public class CubeMovement : MonoBehaviour
     
     Vector3 mousePositionWorld;
     Camera cam;
+    float cubeZ;
     int layerMask = 6;
 
     private void Start()
     {
         cam = Camera.main;
+        
+        if (SceneManager.GetActiveScene().name == "MainMenu") { cubeZ = 41.29f; }
+        else { cubeZ = 49f; }
+
         if (isMoveable) { spaceSlider.SetActive(true); }
     }
 
@@ -25,7 +31,7 @@ public class CubeMovement : MonoBehaviour
             Debug.Log(mousePositionWorld);
             mousePositionWorld = Input.mousePosition;
             
-            mousePositionWorld.z = 49f;
+            mousePositionWorld.z = cubeZ;
             mousePositionWorld = cam.ScreenToWorldPoint(mousePositionWorld);
 
             float distanceFromCenter = Mathf.Sqrt((Mathf.Pow(mousePositionWorld.x, 2) - 0) + (Mathf.Pow(mousePositionWorld.z, 2) - 0));

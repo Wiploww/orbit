@@ -11,3 +11,9 @@ I began this project in Fall 2024 with grid paper, a flashlight, and board game 
 - Added Space Cubes
 - Added two new levels
 - Build uploaded to [wiploww.itch.io/orbit](https://wiploww.itch.io/orbit)
+
+***
+
+# Attribution
+[Setting icons created by Phoenix Group - Flaticon](https://www.flaticon.com/free-icons/setting)
+[Squares icons created by AriqStock - Flaticon](https://www.flaticon.com/free-icons/squares)

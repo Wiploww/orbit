@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1583718923527549300}
   - component: {fileID: 1177482566788231274}
   - component: {fileID: 8075753128572006800}
-  - component: {fileID: 2246924646339262240}
   m_Layer: 6
   m_Name: GreenCube
   m_TagString: Green
@@ -439,18 +438,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conditionLight: {fileID: 6917014975388903338}
   ting: {fileID: 8300000, guid: 4698ae6525f5de3428ea3d31b7c39187, type: 3}
---- !u!114 &2246924646339262240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 846428831595326843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7d8e2b22570b04dbde4621e9413741, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1422636983806500010
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +534,7 @@ GameObject:
   - component: {fileID: 4719276322643031757}
   - component: {fileID: 5651267673904657315}
   - component: {fileID: 5266097881915559214}
-  m_Layer: 6
+  m_Layer: 2
   m_Name: Pulse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
