@@ -15,5 +15,5 @@ I began this project in Fall 2024 with grid paper, a flashlight, and board game 
 ***
 
 # Attribution
-[Setting icons created by Phoenix Group - Flaticon](https://www.flaticon.com/free-icons/setting)
-[Squares icons created by AriqStock - Flaticon](https://www.flaticon.com/free-icons/squares)
+- [Setting icons created by Phoenix Group - Flaticon](https://www.flaticon.com/free-icons/setting)
+- [Squares icons created by AriqStock - Flaticon](https://www.flaticon.com/free-icons/squares)
