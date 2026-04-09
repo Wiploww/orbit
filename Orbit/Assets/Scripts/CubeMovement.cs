@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
 
 public class CubeMovement : MonoBehaviour
 {
     [SerializeField] bool isMoveable;
-    [SerializeField] GameObject spaceSlider;
+    [SerializeField] Material outline;
+    //[SerializeField] GameObject spaceSlider;
     
     Vector3 mousePositionWorld;
     Camera cam;
@@ -19,9 +21,17 @@ public class CubeMovement : MonoBehaviour
         cam = Camera.main;
         
         if (SceneManager.GetActiveScene().name == "MainMenu") { cubeZ = 41.29f; }
-        else { cubeZ = 49f; }
+        else { cubeZ = 48.8f; }
 
-        if (isMoveable) { spaceSlider.SetActive(true); }
+        if (isMoveable) 
+        {
+            Material[] mats = GetComponent<Renderer>().materials;
+            mats[1] = outline;
+            GetComponent<Renderer>().materials = mats;
+        }
+
+
+        //if (isMoveable) { spaceSlider.SetActive(true); }
     }
 
     private void OnMouseDrag()
