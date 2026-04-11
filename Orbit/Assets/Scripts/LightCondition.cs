@@ -6,11 +6,15 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.SceneManagement;
 
 public class LightCondition : MonoBehaviour
 {
     public UnityEvent ConditionMet;
     public UnityEvent ConditionLost;
+
+    float edgeDistance = .8f;
+
     enum Condition
     {
         Error, inLight, inDark, inRed, inLightAndDark
@@ -51,6 +55,15 @@ public class LightCondition : MonoBehaviour
                 color = Color.green;
                 break;
         }
+
+        if(SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            edgeDistance = 1.6f;
+        }
+        else
+        {
+            edgeDistance = .8f;
+        }
     }
 
     public void Update()
@@ -65,10 +78,10 @@ public class LightCondition : MonoBehaviour
 
     void PositionEdges()
     {
-        edges[0] = new Vector3(transform.localPosition.x + .8f, transform.position.y, transform.localPosition.z + .8f);
-        edges[1] = new Vector3(transform.localPosition.x + .8f, transform.position.y, transform.localPosition.z - .8f);
-        edges[2] = new Vector3(transform.localPosition.x - .8f, transform.position.y, transform.localPosition.z + .8f);
-        edges[3] = new Vector3(transform.localPosition.x - .8f, transform.position.y, transform.localPosition.z - .8f);
+        edges[0] = new Vector3(transform.localPosition.x + edgeDistance, transform.position.y, transform.localPosition.z + edgeDistance);
+        edges[1] = new Vector3(transform.localPosition.x + edgeDistance, transform.position.y, transform.localPosition.z - edgeDistance);
+        edges[2] = new Vector3(transform.localPosition.x - edgeDistance, transform.position.y, transform.localPosition.z + edgeDistance);
+        edges[3] = new Vector3(transform.localPosition.x - edgeDistance, transform.position.y, transform.localPosition.z - edgeDistance);
     }
 
     void CastRays()

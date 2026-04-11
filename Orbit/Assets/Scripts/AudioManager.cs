@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource effectSource;
+    //[SerializeField] AudioSource effectSource;
 
     [SerializeField] AudioClip background;
 

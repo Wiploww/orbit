@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.ProBuilder;
 using UnityEngine.SceneManagement;
 
 public class CubeMovement : MonoBehaviour
 {
     [SerializeField] bool isMoveable;
     [SerializeField] Material outline;
-    //[SerializeField] GameObject spaceSlider;
-    
+    [SerializeField] CursorUI cursor;
+
     Vector3 mousePositionWorld;
     Camera cam;
     float cubeZ;
@@ -18,27 +17,25 @@ public class CubeMovement : MonoBehaviour
 
     private void Start()
     {
-        cam = Camera.main;
-        
-        if (SceneManager.GetActiveScene().name == "MainMenu") { cubeZ = 41.29f; }
-        else { cubeZ = 48.8f; }
-
         if (isMoveable) 
         {
+            cam = Camera.main;
+
+            if (SceneManager.GetActiveScene().name == "MainMenu") { cubeZ = 15.3f; }
+            else { cubeZ = 48.8f; }
+
             Material[] mats = GetComponent<Renderer>().materials;
             mats[1] = outline;
             GetComponent<Renderer>().materials = mats;
+
+            cursor = GameObject.Find("Cursor").GetComponent<CursorUI>();
         }
-
-
-        //if (isMoveable) { spaceSlider.SetActive(true); }
     }
 
     private void OnMouseDrag()
     {
         if (isMoveable)
         {
-            Debug.Log(mousePositionWorld);
             mousePositionWorld = Input.mousePosition;
             
             mousePositionWorld.z = cubeZ;
@@ -51,12 +48,28 @@ public class CubeMovement : MonoBehaviour
 
             if (distanceFromCenter < 18.5f)
             {
-                gameObject.transform.position = mousePositionWorld;
+                transform.position = mousePositionWorld;
             }
             else
             {
                 Debug.Log("Too far :[");
             }
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        if (isMoveable)
+        {
+            cursor.OnCursorEnter();
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (isMoveable)
+        {
+            cursor.OnCursorExit();
         }
     }
 }

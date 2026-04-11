@@ -21,14 +21,15 @@ public class MoveSun : MonoBehaviour
     {
         isLocked = false;
 
-        if (SceneManager.GetActiveScene().name == "MainMenu") { sunZ = 12.1604f; }
+        if (SceneManager.GetActiveScene().name == "MainMenu") { sunZ = 11.5f; }
         else { sunZ = 46.36f; }
     }
 
     private void Update()
     {
         // Lock sun
-        if (Input.GetKeyDown(KeyCode.Space)) { isLocked = !isLocked; }
+        if (Input.GetMouseButtonDown(0)) { isLocked = true; }
+        if (Input.GetMouseButtonUp(0)) { isLocked = false; }
     }
 
     void FixedUpdate()

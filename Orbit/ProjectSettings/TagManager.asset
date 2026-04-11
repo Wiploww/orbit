@@ -9,6 +9,7 @@ TagManager:
   - Yellow
   - Green
   - Red
+  - Cursor
   layers:
   - Default
   - TransparentFX
