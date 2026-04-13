@@ -4,37 +4,38 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CubeMovement : MonoBehaviour
+public class CubeMovement : Clickable
 {
-    [SerializeField] bool isMoveable;
     [SerializeField] Material outline;
-    [SerializeField] CursorUI cursor;
-
+    
     Vector3 mousePositionWorld;
     Camera cam;
     float cubeZ;
-    int layerMask = 6;
 
-    private void Start()
+    //Ray ray;
+    //RaycastHit[] hits;
+    //int layerMask = 6;
+
+    public void Start()
     {
-        if (isMoveable) 
+        BaseStart();
+
+        if (isInteractable) 
         {
             cam = Camera.main;
 
-            if (SceneManager.GetActiveScene().name == "MainMenu") { cubeZ = 15.3f; }
+            if (SceneManager.GetActiveScene().name == "MainMenu") { cubeZ = 14.8f; }
             else { cubeZ = 48.8f; }
 
             Material[] mats = GetComponent<Renderer>().materials;
             mats[1] = outline;
             GetComponent<Renderer>().materials = mats;
-
-            cursor = GameObject.Find("Cursor").GetComponent<CursorUI>();
         }
     }
 
     private void OnMouseDrag()
     {
-        if (isMoveable)
+        if (isInteractable)
         {
             mousePositionWorld = Input.mousePosition;
             
@@ -42,9 +43,8 @@ public class CubeMovement : MonoBehaviour
             mousePositionWorld = cam.ScreenToWorldPoint(mousePositionWorld);
 
             float distanceFromCenter = Mathf.Sqrt((Mathf.Pow(mousePositionWorld.x, 2) - 0) + (Mathf.Pow(mousePositionWorld.z, 2) - 0));
-            //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            //RaycastHit hit;
-            //Physics.Raycast(ray, out hit, 100, layerMask);
+            //ray = cam.ScreenPointToRay(Input.mousePosition);
+            //Physics.RaycastAll(ray, out hits, 100, layerMask);
 
             if (distanceFromCenter < 18.5f)
             {
@@ -54,22 +54,6 @@ public class CubeMovement : MonoBehaviour
             {
                 Debug.Log("Too far :[");
             }
-        }
-    }
-
-    private void OnMouseEnter()
-    {
-        if (isMoveable)
-        {
-            cursor.OnCursorEnter();
-        }
-    }
-
-    private void OnMouseExit()
-    {
-        if (isMoveable)
-        {
-            cursor.OnCursorExit();
         }
     }
 }

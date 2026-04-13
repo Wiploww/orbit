@@ -4,12 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuButton : MonoBehaviour
+public class MenuButton : Clickable
 {
     [SerializeField] ButtonManager buttonManager;
     [SerializeField] Material mainColor;
     [SerializeField] Material colorEmissive;
     bool buttonClicked = false;
+    [SerializeField] float dragTime = 0;
 
     enum ButtonAction
     {
@@ -17,7 +18,12 @@ public class MenuButton : MonoBehaviour
     };
     
     [SerializeField] ButtonAction buttonAction;
-    
+
+    private void Start()
+    {
+        BaseStart();
+    }
+
     private void OnMouseEnter()
     {
         GetComponent<Renderer>().material = colorEmissive;
@@ -29,9 +35,22 @@ public class MenuButton : MonoBehaviour
         buttonClicked = false;
     }
 
+    private void Update()
+    {
+        if(Input.GetMouseButtonUp(0))
+        {
+            dragTime = 0;
+        }
+    }
+
+    private void OnMouseDrag()
+    {
+        dragTime += Time.deltaTime;
+    }
+
     private void OnMouseUp()
     {
-        if (buttonClicked)
+        if (buttonClicked && dragTime < .3f)
         {
             switch (buttonAction)
             {
@@ -44,7 +63,7 @@ public class MenuButton : MonoBehaviour
                     break;
 
                 case ButtonAction.Options:
-                    buttonManager.OpenSettings();
+                    buttonManager.Settings(true);
                     break;
 
                 case ButtonAction.Quit:

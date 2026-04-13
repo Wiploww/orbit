@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
     [SerializeField] int levelCount = 7;
     [SerializeField] GameObject pauseScreen;
+    [SerializeField] Volume pauseVolume;
     [SerializeField] GameObject optionScreen;
+    [SerializeField] GameObject playerPrefsCheck;
     [SerializeField] GameObject colorTips;
 
-    bool paused;
     bool tips;
     bool settings;
 
@@ -52,38 +54,59 @@ public class ButtonManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            if(SceneManager.GetActiveScene().name == "MainMenu")
+            {
+                Settings(false);
+            }
+            else
+            {
+                Pause();
+            }
         }
+        
     }
 
     public void Pause()
     {
-        if (paused && !tips)
+        if (pauseVolume.weight == 1f && !tips)
         {
             Time.timeScale = 1;
             pauseScreen.SetActive(false);
-            paused = false;
+            pauseVolume.weight = 0f;
         }
         else if (!tips)
         {
             Time.timeScale = 0;
             pauseScreen.SetActive(true);
-            paused = true;
+            pauseVolume.weight = 1f;
         }
         else if (tips)
         {
             Tips();
         }
     }
-    public void OpenSettings()
+    public void Settings(bool doOpen)
     {
-        optionScreen.SetActive(true);
-        settings = true;
+        optionScreen.SetActive(doOpen);
+        settings = doOpen;
+
+        if (doOpen)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
-    public void CloseSettings()
+
+    public void CheckPlayerPrefs(bool doOpen)
     {
-        optionScreen.SetActive(false);
-        settings = false;
+        playerPrefsCheck.SetActive(doOpen);
+    }
+    public void ClearPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
     }
 
     public void Tips()

@@ -70,6 +70,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 993f1c17ece09de4c937a1c2b1f95cd7, type: 2}
+  - {fileID: 2100000, guid: 993f1c17ece09de4c937a1c2b1f95cd7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -181,8 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de61001db076e14f9490437c0a393f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoveable: 0
-  outline: {fileID: 0}
+  cursor: {fileID: 0}
+  isInteractable: 0
+  outline: {fileID: 2100000, guid: ae82e9a84d55cb64da1d3f274e3dda0f, type: 2}
 --- !u!114 &8075753128572006800
 MonoBehaviour:
   m_ObjectHideFlags: 0

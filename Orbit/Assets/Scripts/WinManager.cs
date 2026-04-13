@@ -11,6 +11,7 @@ public class WinManager : MonoBehaviour
     public bool win = false;
     [SerializeField] GameObject winScreen;
     [SerializeField] Volume winVolume;
+    [SerializeField] Volume pauseVolume;
     [SerializeField] TextMeshProUGUI timer;
     [SerializeField] Slider starBar;
     [SerializeField] Image[] stars;
@@ -48,6 +49,7 @@ public class WinManager : MonoBehaviour
             if (screen.alpha < 1)
             {
                 screen.alpha += .01f + Time.deltaTime;
+                pauseVolume.weight += .01f + Time.deltaTime;
             }
 
             if (PlayerPrefs.GetInt("LevelMax") <= PlayerPrefs.GetInt("CurrentLevel") && win == false)
@@ -84,7 +86,7 @@ public class WinManager : MonoBehaviour
     {
         if(starTimer > 0)
         {
-            starTimer -= Time.deltaTime;
+            starTimer -= Time.deltaTime * .01f;
             starBar.SetValueWithoutNotify(starTimer);
         }
 

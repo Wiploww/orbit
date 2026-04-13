@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CursorSingleton : MonoBehaviour
+public class Singleton : MonoBehaviour
 {
-    public static CursorSingleton instance;
+    public static Singleton instance;
 
     void Awake()
     {

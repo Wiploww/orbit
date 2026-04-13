@@ -624,7 +624,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de61001db076e14f9490437c0a393f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoveable: 0
+  cursor: {fileID: 0}
+  isInteractable: 0
   outline: {fileID: 2100000, guid: ae82e9a84d55cb64da1d3f274e3dda0f, type: 2}
 --- !u!114 &2034841754504406929
 MonoBehaviour:

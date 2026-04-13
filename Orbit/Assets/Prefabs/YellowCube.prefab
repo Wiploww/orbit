@@ -185,6 +185,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f9539fb03c0fe834c8650c293bf70946, type: 2}
+  - {fileID: 2100000, guid: f9539fb03c0fe834c8650c293bf70946, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -239,8 +240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de61001db076e14f9490437c0a393f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMoveable: 0
-  outline: {fileID: 0}
+  cursor: {fileID: 0}
+  isInteractable: 0
+  outline: {fileID: 2100000, guid: ae82e9a84d55cb64da1d3f274e3dda0f, type: 2}
 --- !u!1 &7756656300467707538
 GameObject:
   m_ObjectHideFlags: 0

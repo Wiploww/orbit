@@ -18,3 +18,4 @@ I began this project in Fall 2024 with grid paper, a flashlight, and board game 
 - [Setting icons created by Phoenix Group - Flaticon](https://www.flaticon.com/free-icons/setting) (used in main menu)
 - [Squares icons created by AriqStock - Flaticon](https://www.flaticon.com/free-icons/squares) (used in main menu)
 - [Cursor Icons by Icons8](https://icons8.com/) (used in animated tutorial)
+- [19.2-UnTono_Campana.wav by UsuarioLeal](https://freesound.org/s/446466/) -- License: Creative Commons 0 (used as "ting.wav")
