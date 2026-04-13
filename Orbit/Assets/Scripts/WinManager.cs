@@ -86,7 +86,7 @@ public class WinManager : MonoBehaviour
     {
         if(starTimer > 0)
         {
-            starTimer -= Time.deltaTime * .01f;
+            starTimer -= Time.deltaTime * .5f;
             starBar.SetValueWithoutNotify(starTimer);
         }
 

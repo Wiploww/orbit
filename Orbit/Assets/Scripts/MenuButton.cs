@@ -52,23 +52,26 @@ public class MenuButton : Clickable
     {
         if (buttonClicked && dragTime < .3f)
         {
-            switch (buttonAction)
+            if (buttonManager.settings == false)
             {
-                case ButtonAction.Play:
-                    buttonManager.Play();
-                    break;
+                switch (buttonAction)
+                {
+                    case ButtonAction.Play:
+                        buttonManager.Play();
+                        break;
 
-                case ButtonAction.LevelSelect:
-                    buttonManager.LevelSelect();
-                    break;
+                    case ButtonAction.LevelSelect:
+                        buttonManager.LevelSelect();
+                        break;
 
-                case ButtonAction.Options:
-                    buttonManager.Settings(true);
-                    break;
+                    case ButtonAction.Options:
+                        buttonManager.Settings(true);
+                        break;
 
-                case ButtonAction.Quit:
-                    buttonManager.Quit();
-                    break;
+                    case ButtonAction.Quit:
+                        buttonManager.Quit();
+                        break;
+                }
             }
         }
     }

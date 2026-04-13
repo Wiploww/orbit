@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    [SerializeField] int levelCount = 7;
+    [SerializeField] const int LEVEL_COUNT = 9;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] Volume pauseVolume;
     [SerializeField] GameObject optionScreen;
@@ -15,7 +15,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject colorTips;
 
     bool tips;
-    bool settings;
+    public bool settings;
 
     private void Awake()
     {
@@ -54,13 +54,18 @@ public class ButtonManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(SceneManager.GetActiveScene().name == "MainMenu")
+            switch (SceneManager.GetActiveScene().name)
             {
-                Settings(false);
-            }
-            else
-            {
-                Pause();
+                case "MainMenu":
+                    Settings(false);
+                    break;
+                case "LevelSelect":
+                    MainMenu();
+                    break;
+                default:
+                    Pause();
+                    break;
+                
             }
         }
         
@@ -162,7 +167,7 @@ public class ButtonManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if(PlayerPrefs.GetInt("CurrentLevel") == levelCount - 1)
+        if(PlayerPrefs.GetInt("CurrentLevel") == LEVEL_COUNT - 1)
         {
             LevelSelect();
         }
