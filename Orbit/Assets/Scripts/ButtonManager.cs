@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,15 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] GameObject playerPrefsCheck;
     [SerializeField] GameObject colorTips;
 
+    enum Scenes
+    {
+        MainMenu,
+        LevelSelect,
+        Gameplay,
+        Null
+    };
+
+    Scenes currentScene;
     bool tips;
     public bool settings;
 
@@ -24,13 +34,15 @@ public class ButtonManager : MonoBehaviour
             PlayerPrefs.SetInt("LevelMax", 0);
             PlayerPrefs.SetInt("CurrentLevel", 0);
         }
+
+        currentScene = (Scenes)SceneManager.GetActiveScene().buildIndex;
     }
 
     private void Start()
     {
         Time.timeScale = 1;
 
-        if (SceneManager.GetActiveScene().name == "LevelSelect")
+        if (currentScene == Scenes.LevelSelect)
         {
             for (int i = 1; i <= 15; i++)
             {
@@ -52,14 +64,15 @@ public class ButtonManager : MonoBehaviour
 
     private void Update()
     {
+        //esc
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            switch (SceneManager.GetActiveScene().name)
+            switch (currentScene)
             {
-                case "MainMenu":
+                case Scenes.MainMenu:
                     Settings(false);
                     break;
-                case "LevelSelect":
+                case Scenes.LevelSelect:
                     MainMenu();
                     break;
                 default:
@@ -68,7 +81,15 @@ public class ButtonManager : MonoBehaviour
                 
             }
         }
-        
+
+        //R
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            if(currentScene == Scenes.Gameplay)
+            {
+                Play();
+            }
+        }
     }
 
     public void Pause()
