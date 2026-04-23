@@ -6,7 +6,7 @@ I began this project in Fall 2024 with grid paper, a flashlight, and board game 
 ***
 
 # Recent Changes
-## v2.0
+## v2.0.0
 **4/23/26**
 - Cube lights have been updated to more clearly show when their conditions are met
 - Locking the sun automatically when moving a cube has been removed
