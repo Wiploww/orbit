@@ -6,11 +6,15 @@ I began this project in Fall 2024 with grid paper, a flashlight, and board game 
 ***
 
 # Recent Changes
-## Beta-v3.1.0
-**3/16/26**
-- Added Space Cubes
-- Added two new levels
-- Build uploaded to [wiploww.itch.io/orbit](https://wiploww.itch.io/orbit)
+## v2.0
+**4/23/26**
+- Cube lights have been updated to more clearly show when their conditions are met
+- Locking the sun automatically when moving a cube has been removed
+- The ability to lock the sun with RMB has been added
+- Sun locking animated tutorial has been added
+- The colors of the white and yellow cubes have been switched for intuitive clarity
+- New levels have been added
+- Build uploaded to https://wiploww.itch.io/orbit
 
 ***
 
@@ -18,5 +22,5 @@ I began this project in Fall 2024 with grid paper, a flashlight, and board game 
 - [Setting icons created by Phoenix Group - Flaticon](https://www.flaticon.com/free-icons/setting) (used in main menu)
 - [Squares icons created by AriqStock - Flaticon](https://www.flaticon.com/free-icons/squares) (used in main menu)
 - [Cursor Icons by Icons8](https://icons8.com/) (used in animated tutorials)
-- [Lock Icons by Icons8](https://icons8.com/) (used in animated tutorials)
+- [Lock Icon by Icons8](https://icons8.com/) (used in animated tutorials)
 - [19.2-UnTono_Campana.wav by UsuarioLeal](https://freesound.org/s/446466/) -- License: Creative Commons 0 (used as "ting.wav")
