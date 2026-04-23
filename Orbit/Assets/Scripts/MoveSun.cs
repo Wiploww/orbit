@@ -28,8 +28,7 @@ public class MoveSun : MonoBehaviour
     private void Update()
     {
         // Lock sun
-        if (Input.GetMouseButtonDown(0)) { isLocked = true; }
-        if (Input.GetMouseButtonUp(0)) { isLocked = false; }
+        if (Input.GetMouseButtonDown(1)) { isLocked = !isLocked; }
     }
 
     void FixedUpdate()

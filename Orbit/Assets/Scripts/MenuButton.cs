@@ -57,7 +57,7 @@ public class MenuButton : Clickable
                 switch (buttonAction)
                 {
                     case ButtonAction.Play:
-                        buttonManager.Play();
+                        buttonManager.LoadGameplay();
                         break;
 
                     case ButtonAction.LevelSelect:

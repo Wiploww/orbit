@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3428247635446033096
 Transform:
   m_ObjectHideFlags: 0
@@ -44,9 +44,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.9048093, b: 0.16862744, a: 1}
-  m_Intensity: 36
-  m_Range: 10
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 55
+  m_Range: 3.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f9539fb03c0fe834c8650c293bf70946, type: 2}
+  - {fileID: 2100000, guid: f764fc86ae40ebb4d85b49e99a16d1a8, type: 2}
   - {fileID: 2100000, guid: 06ceb96f7eb352d4db9804cd8687255e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

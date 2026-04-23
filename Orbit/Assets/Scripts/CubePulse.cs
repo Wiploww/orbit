@@ -14,13 +14,14 @@ public class CubePulse : MonoBehaviour
     {
         pulseMaterial = GetComponent<Renderer>().material;
 
-        switch(transform.parent.tag)
+        switch (transform.parent.tag)
         {
             case "Blue":
                 pulseColor = new Color(0.374675542f, 0, 77.8742905f, 1f);
                 break;
             case "White":
-                pulseColor = new Color(7.90669966f, 7.90669966f, 7.90669966f, 1f); 
+                //pulseColor = new Color(7.90669966f, 7.90669966f, 7.90669966f, 1f); 
+                pulseColor = new Color(2.63901496f, 1.68644512f, 0f, 1f);
                 break;
             case "Green":
                 pulseColor = new Color(0.113275774f, 11.1817608f, 0f, 1f);

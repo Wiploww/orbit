@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    [SerializeField] const int LEVEL_COUNT = 9;
+    [SerializeField] const int LEVEL_COUNT = 15;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] Volume pauseVolume;
     [SerializeField] GameObject optionScreen;
@@ -68,7 +69,12 @@ public class ButtonManager : MonoBehaviour
                 
             }
         }
-        
+
+        //Restart
+        if (Input.GetKeyUp(KeyCode.R) && SceneManager.GetActiveScene().name == "Gameplay")
+        {
+            LoadGameplay();
+        }
     }
 
     public void Pause()
@@ -128,7 +134,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void Play()
+    public void LoadGameplay()
     {
         SceneManager.LoadScene("Gameplay");
     }
@@ -145,7 +151,7 @@ public class ButtonManager : MonoBehaviour
                 if(PlayerPrefs.GetInt("LevelMax") >= i - 1)
                 {
                     PlayerPrefs.SetInt("CurrentLevel", i - 1);
-                    Play();
+                    LoadGameplay();
                 }
                 else
                 {
@@ -174,7 +180,7 @@ public class ButtonManager : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);
-            Play();
+            LoadGameplay();
         }
     }
 
