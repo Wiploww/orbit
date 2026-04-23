@@ -35,6 +35,15 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""047cfd57-006e-4a81-aae8-6406f53bb045"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -70,6 +79,17 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
                     ""action"": ""MoveSun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb761f0b-e3df-4fea-9cbf-732b1724e69c"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -79,6 +99,7 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_MoveSun = m_PlayerControls.FindAction("MoveSun", throwIfNotFound: true);
+        m_PlayerControls_Restart = m_PlayerControls.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,11 +162,13 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerControls;
     private List<IPlayerControlsActions> m_PlayerControlsActionsCallbackInterfaces = new List<IPlayerControlsActions>();
     private readonly InputAction m_PlayerControls_MoveSun;
+    private readonly InputAction m_PlayerControls_Restart;
     public struct PlayerControlsActions
     {
         private @DefaultActions m_Wrapper;
         public PlayerControlsActions(@DefaultActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveSun => m_Wrapper.m_PlayerControls_MoveSun;
+        public InputAction @Restart => m_Wrapper.m_PlayerControls_Restart;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -158,6 +181,9 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
             @MoveSun.started += instance.OnMoveSun;
             @MoveSun.performed += instance.OnMoveSun;
             @MoveSun.canceled += instance.OnMoveSun;
+            @Restart.started += instance.OnRestart;
+            @Restart.performed += instance.OnRestart;
+            @Restart.canceled += instance.OnRestart;
         }
 
         private void UnregisterCallbacks(IPlayerControlsActions instance)
@@ -165,6 +191,9 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
             @MoveSun.started -= instance.OnMoveSun;
             @MoveSun.performed -= instance.OnMoveSun;
             @MoveSun.canceled -= instance.OnMoveSun;
+            @Restart.started -= instance.OnRestart;
+            @Restart.performed -= instance.OnRestart;
+            @Restart.canceled -= instance.OnRestart;
         }
 
         public void RemoveCallbacks(IPlayerControlsActions instance)
@@ -185,5 +214,6 @@ public partial class @DefaultActions: IInputActionCollection2, IDisposable
     public interface IPlayerControlsActions
     {
         void OnMoveSun(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }

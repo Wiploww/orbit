@@ -13,7 +13,6 @@ public class MoveSun : MonoBehaviour
     [SerializeField] GameObject sun;
     [SerializeField] float moveSpeed = 10;
     [SerializeField] static bool isLocked;
-    static bool rightLock = false;
 
     private Vector3 mousePositionWorld;
     float sunZ;
@@ -29,13 +28,7 @@ public class MoveSun : MonoBehaviour
     private void Update()
     {
         // Lock sun
-        if (Input.GetMouseButtonDown(0)) { isLocked = true; }
-        if (Input.GetMouseButtonDown(1)) 
-        { 
-            isLocked = !isLocked; 
-            rightLock = !rightLock;
-        }
-        if (Input.GetMouseButtonUp(0) && !rightLock) { isLocked = false; }
+        if (Input.GetMouseButtonDown(1)) { isLocked = !isLocked; }
     }
 
     void FixedUpdate()

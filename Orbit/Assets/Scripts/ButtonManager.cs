@@ -1,29 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
-    [SerializeField] const int LEVEL_COUNT = 9;
+    [SerializeField] const int LEVEL_COUNT = 15;
     [SerializeField] GameObject pauseScreen;
     [SerializeField] Volume pauseVolume;
     [SerializeField] GameObject optionScreen;
     [SerializeField] GameObject playerPrefsCheck;
     [SerializeField] GameObject colorTips;
 
-    enum Scenes
-    {
-        MainMenu,
-        LevelSelect,
-        Gameplay,
-        Null
-    };
-
-    Scenes currentScene;
     bool tips;
     public bool settings;
 
@@ -34,15 +25,13 @@ public class ButtonManager : MonoBehaviour
             PlayerPrefs.SetInt("LevelMax", 0);
             PlayerPrefs.SetInt("CurrentLevel", 0);
         }
-
-        currentScene = (Scenes)SceneManager.GetActiveScene().buildIndex;
     }
 
     private void Start()
     {
         Time.timeScale = 1;
 
-        if (currentScene == Scenes.LevelSelect)
+        if (SceneManager.GetActiveScene().name == "LevelSelect")
         {
             for (int i = 1; i <= 15; i++)
             {
@@ -64,15 +53,14 @@ public class ButtonManager : MonoBehaviour
 
     private void Update()
     {
-        //esc
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            switch (currentScene)
+            switch (SceneManager.GetActiveScene().name)
             {
-                case Scenes.MainMenu:
+                case "MainMenu":
                     Settings(false);
                     break;
-                case Scenes.LevelSelect:
+                case "LevelSelect":
                     MainMenu();
                     break;
                 default:
@@ -82,13 +70,10 @@ public class ButtonManager : MonoBehaviour
             }
         }
 
-        //R
-        if(Input.GetKeyDown(KeyCode.R))
+        //Restart
+        if (Input.GetKeyUp(KeyCode.R) && SceneManager.GetActiveScene().name == "Gameplay")
         {
-            if(currentScene == Scenes.Gameplay)
-            {
-                Play();
-            }
+            LoadGameplay();
         }
     }
 
@@ -149,7 +134,7 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void Play()
+    public void LoadGameplay()
     {
         SceneManager.LoadScene("Gameplay");
     }
@@ -166,7 +151,7 @@ public class ButtonManager : MonoBehaviour
                 if(PlayerPrefs.GetInt("LevelMax") >= i - 1)
                 {
                     PlayerPrefs.SetInt("CurrentLevel", i - 1);
-                    Play();
+                    LoadGameplay();
                 }
                 else
                 {
@@ -195,7 +180,7 @@ public class ButtonManager : MonoBehaviour
         else
         {
             PlayerPrefs.SetInt("CurrentLevel", PlayerPrefs.GetInt("CurrentLevel") + 1);
-            Play();
+            LoadGameplay();
         }
     }
 
